@@ -7,6 +7,8 @@ public class SettingsViewModel : ViewModelBase
 {
     private bool _enabled = true;
     private bool _startAtStartup = true;
+    private bool _enableFileLogging;
+    private bool _enableNotifications = true;
 
     public bool Enabled
     {
@@ -29,6 +31,31 @@ public class SettingsViewModel : ViewModelBase
             _startAtStartup = value;
             StartupService.RegisterInStartup(_startAtStartup);
             OnPropertyChanged();
+        }
+    }
+
+    public bool EnableFileLogging
+    {
+        get => _enableFileLogging;
+        set
+        {
+            if (value == _enableFileLogging) return;
+            _enableFileLogging = value;
+            LoggingService.Enabled = value;
+            OnPropertyChanged();
+            StateManager.Instance.SaveState<SettingsViewModel>();
+        }
+    }
+
+    public bool EnableNotifications
+    {
+        get => _enableNotifications;
+        set
+        {
+            if (value == _enableNotifications) return;
+            _enableNotifications = value;
+            OnPropertyChanged();
+            StateManager.Instance.SaveState<SettingsViewModel>();
         }
     }
 

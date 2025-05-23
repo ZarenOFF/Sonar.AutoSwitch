@@ -32,6 +32,20 @@
                 <ToggleSwitch IsChecked="{Binding UseGithubConfigs}" />
             </ui:SettingsExpander.Footer>
         </ui:SettingsExpander>
+		<ui:SettingsExpander IconSource="File" Header="Logging in file" IsExpanded="True"
+                     Description="Enable detailed logging of all program actions to a file"
+                     IsClickEnabled="False">
+			<ui:SettingsExpander.Footer>
+				<ToggleSwitch IsChecked="{Binding EnableFileLogging}" />
+			</ui:SettingsExpander.Footer>
+		</ui:SettingsExpander>
+		<ui:SettingsExpander IconSource="Info" Header="System notifications" IsExpanded="True"
+							 Description="Enable system notifications"
+							 IsClickEnabled="False">
+			<ui:SettingsExpander.Footer>
+				<ToggleSwitch IsChecked="{Binding EnableNotifications}" />
+			</ui:SettingsExpander.Footer>
+		</ui:SettingsExpander>
     </StackPanel>
 
 </UserControl>
